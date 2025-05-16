@@ -34,23 +34,3 @@ packages/
 *.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
-
-## Ignore Node.js dependencies
-node_modules/
-
-## Ignore publish output
-publish/
-*.pubxml
-*.publishproj
-
-## Ignore generated files
-*.g.*
-*.g.i.*
-Generated_Code/
-
-## Ignore backup files
-Backup*/
-*.bak
-
-## Ignore local history
-.localhistory/
