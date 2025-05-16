@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.Contracts", "OrdersTracker.Contracts\OrdersTracker.Contracts.csproj", "{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.API", "OrdersTracker.API\OrdersTracker.API.csproj", "{E2EB3FF4-032E-4F70-9FC2-90F050163209}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D2C02FD5-307B-4CD9-A166-C24CF2B620C5} = {D2C02FD5-307B-4CD9-A166-C24CF2B620C5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.MVC", "OrdersTracker.MVC\OrdersTracker.MVC.csproj", "{94D2F486-C2E2-481D-98F2-A840C35F959F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.UnitTests", "OrdersTracker.UnitTests\OrdersTracker.UnitTests.csproj", "{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.IntegrationTests", "OrdersTracker.IntegrationTests\OrdersTracker.IntegrationTests.csproj", "{7D54F473-22FE-4272-9F3A-8E8AD3441546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2EB3FF4-032E-4F70-9FC2-90F050163209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2EB3FF4-032E-4F70-9FC2-90F050163209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2EB3FF4-032E-4F70-9FC2-90F050163209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2EB3FF4-032E-4F70-9FC2-90F050163209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {199CBA58-C53E-4176-BA5D-CE426DB4D90C}
+	EndGlobalSection
+EndGlobal
