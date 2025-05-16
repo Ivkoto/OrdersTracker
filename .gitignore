@@ -43,9 +43,6 @@ publish/
 *.pubxml
 *.publishproj
 
-## Ignore wwwroot static files
-wwwroot/
-
 ## Ignore generated files
 *.g.*
 *.g.i.*
