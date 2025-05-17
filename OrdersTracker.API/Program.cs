@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using OrdersTracker.API.Endpoints;
 using OrdersTracker.API.Infrastructure;
+using OrdersTracker.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +16,10 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
-builder.Services.AddSingleton<IEndpoint, Customers>();
+
+builder.Services.AddScoped<ICustomersRepository, CustomersRepository>();
+builder.Services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
+builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("Database"));
 
 //builder.Services.AddMvc(options =>
 //{
@@ -25,19 +28,13 @@ builder.Services.AddSingleton<IEndpoint, Customers>();
 
 var app = builder.Build();
 
-// Call the DatabaseInitializer to ensure stored procedures exist
-using (var scope = app.Services.CreateScope())
-{
-    await DatabaseInitializer.EnsureStoredProceduresAsync(scope.ServiceProvider);
-}
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-app.Services.GetRequiredService<IEndpoint>().MapEndpoints(app);
+app.MapCustomers();
 
 app.UseStaticFiles();
 app.UseCors();

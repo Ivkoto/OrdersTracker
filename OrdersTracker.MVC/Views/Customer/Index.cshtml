@@ -1,4 +1,4 @@
-@model List<OrdersTracker.Contracts.Models.CustomerModel>
+@model List<CustomerResponse>
 
 <h1>Customers</h1>
 
@@ -7,6 +7,7 @@
         <tr>
             <th>Customer ID</th>
             <th>Contact Name</th>
+            <th>Orders Count</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
             <tr>
                 <td>@customer.CustomerID</td>
                 <td>@customer.ContactName</td>
+                <td>@customer.OrdersCount</td>
             </tr>
         }
     </tbody>

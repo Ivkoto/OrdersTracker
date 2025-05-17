@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.Contracts", "OrdersTracker.Contracts\OrdersTracker.Contracts.csproj", "{D2C02FD5-307B-4CD9-A166-C24CF2B620C5}"
 EndProject
@@ -15,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.UnitTests", "OrdersTracker.UnitTests\OrdersTracker.UnitTests.csproj", "{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.IntegrationTests", "OrdersTracker.IntegrationTests\OrdersTracker.IntegrationTests.csproj", "{7D54F473-22FE-4272-9F3A-8E8AD3441546}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.Database.Deploy", "OrdersTracker.Database.Deploy\OrdersTracker.Database.Deploy.csproj", "{A69374FF-44F4-4F49-8BDB-94DF1460630B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69374FF-44F4-4F49-8BDB-94DF1460630B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69374FF-44F4-4F49-8BDB-94DF1460630B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69374FF-44F4-4F49-8BDB-94DF1460630B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69374FF-44F4-4F49-8BDB-94DF1460630B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

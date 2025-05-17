@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\OrdersTracker.Contracts\OrdersTracker.Contracts.csproj" />
   </ItemGroup>
 

@@ -1,51 +1,42 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using OrdersTracker.Contracts.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using OrdersTracker.API.Extensions;
+using OrdersTracker.API.Repositories;
+using OrdersTracker.Contracts.Response;
 
 namespace OrdersTracker.API.Endpoints;
 
-public class Customers : IEndpoint
+public static class Customers
 {
-    private readonly IConfiguration _configuration;
-
-    public Customers(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
-    public void MapEndpoints(WebApplication app)
+    public static void MapCustomers(this WebApplication app)
     {
         app.MapGet("/customers", GetCustomersList);
+        app.MapGet("/customers/{id}", GetCustomerById);
+        app.MapGet("/customers/{id}/orders", GetCustomerOrders);
     }
 
-    public void MapServices(IServiceCollection services)
+    private static async Task<IResult> GetCustomersList(HttpContext context, [FromServices] ICustomersRepository customersRepository)
     {
-        // Register services here if needed
+        var result = await customersRepository.GetCustomersList(context.RequestAborted);
+
+        var customers = result.Select(c => c.ToResponse()).ToList();
+
+        return Results.Ok(customers);
     }
 
-    private async Task GetCustomersList(HttpContext context)
+    private static async Task<IResult> GetCustomerById(string id, HttpContext context, [FromServices] ICustomersRepository customersRepository)
     {
-        var connectionString = _configuration.GetConnectionString("DatabaseConnection");
+        var result = await customersRepository.GetCustomerById(id, context.RequestAborted);
+        
+        if (result == null)
+            return Results.NotFound($"Customer with ID {id} not found.");
 
-        using var connection = new SqlConnection(connectionString);
-        await connection.OpenAsync();
+        var currentCustomer = result.ToResponse();
 
-        var command = new SqlCommand("GetCustomers", connection)
-        {
-            CommandType = CommandType.StoredProcedure
-        };
+        return Results.Ok(currentCustomer);
+    }
 
-        var customers = new List<CustomerModel>();
-        using var reader = await command.ExecuteReaderAsync();
-        while (await reader.ReadAsync())
-        {
-            customers.Add(new CustomerModel
-            {
-                CustomerID = reader["CustomerID"].ToString()!,
-                ContactName = reader["ContactName"].ToString()!
-            });
-        }
-
-        await context.Response.WriteAsJsonAsync(customers);
+    private static async Task<IResult> GetCustomerOrders(HttpContext context, [FromServices] ICustomersRepository customersRepository)
+    {
+        throw new NotImplementedException();
     }
 }
