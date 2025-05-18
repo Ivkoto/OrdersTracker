@@ -8,9 +8,14 @@ public static class Customers
 {
     public static void MapCustomers(this WebApplication app)
     {
-        app.MapGet("/customers", GetCustomersList);
-        app.MapGet("/customers/{id}", GetCustomerById);
-        app.MapGet("/customers/{id}/orders", GetCustomerOrders);
+        app.MapGet("/customers", GetCustomersList)
+            .RequireCors("AllowedOriginsPolicy");
+
+        app.MapGet("/customers/{id}", GetCustomerById)
+            .RequireCors("AllowedOriginsPolicy");
+
+        app.MapGet("/customers/{id}/orders", GetCustomerOrders)
+            .RequireCors("AllowedOriginsPolicy");
     }
 
     private static async Task<IResult> GetCustomersList(HttpContext context, [FromServices] ICustomersRepository customersRepository)
@@ -42,7 +47,7 @@ public static class Customers
         var result = await customersRepository.GetCustomerOrders(id, context.RequestAborted);
 
         if (result == null || !result.Any())
-            return Results.NotFound($"Customer with ID {id} not found.");
+            return Results.NotFound($"There are no orders for the current customer.");
 
         var orders = result.Select(o => o.ToResponse()).ToList();
 
