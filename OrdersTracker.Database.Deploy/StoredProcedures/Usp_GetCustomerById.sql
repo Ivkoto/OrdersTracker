@@ -5,19 +5,19 @@ BEGIN
 	SET NOCOUNT ON;
 
     SELECT 
-    	CustomerID,
-        CompanyName,
-        ContactName,
-        ContactTitle,
-        Address,
-        City,
-        Region,
-        PostalCode,
-        Country,
-        Phone,
-        Fax
+    	[CustomerID],
+        [CompanyName],
+        [ContactName],
+        [ContactTitle],
+        [Address],
+        [City],
+        [Region],
+        [PostalCode],
+        [Country],
+        [Phone],
+        [Fax]
     FROM
     	[dbo].[Customers]
     WHERE
-	    CustomerID = @CustomerId
+	    [CustomerID] = @CustomerId
 END;

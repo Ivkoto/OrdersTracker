@@ -4,18 +4,16 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT 
-		Cust.[CustomerID],
-		Cust.[ContactName],
-		COUNT(Ord.[OrderID]) AS [OrdersCount]
+		c.[CustomerID],
+		c.[ContactName],
+		COUNT(o.[OrderID]) AS [OrdersCount]
 	FROM 
-		[dbo].[Customers] as Cust
+		[dbo].[Customers] as c
 	LEFT JOIN 
-		[dbo].[Orders] as Ord
-	ON 
-		Cust.[CustomerID] = Ord.[CustomerID]
+		[dbo].[Orders] as o ON c.[CustomerID] = o.[CustomerID]
 	GROUP BY 
-		Cust.[CustomerID], 
-		Cust.[ContactName]
+		c.[CustomerID], 
+		c.[ContactName]
 	ORDER BY
-		Cust.[ContactName]
+		c.[ContactName]
 END;

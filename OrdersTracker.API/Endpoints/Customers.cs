@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrdersTracker.API.Extensions;
 using OrdersTracker.API.Repositories;
-using OrdersTracker.Contracts.Response;
 
 namespace OrdersTracker.API.Endpoints;
 
@@ -35,8 +34,13 @@ public static class Customers
         return Results.Ok(currentCustomer);
     }
 
-    private static async Task<IResult> GetCustomerOrders(HttpContext context, [FromServices] ICustomersRepository customersRepository)
+    private static async Task<IResult> GetCustomerOrders(string id, HttpContext context, [FromServices] ICustomersRepository customersRepository)
     {
-        throw new NotImplementedException();
+        var result = await customersRepository.GetCustomerOrders(id, context.RequestAborted);
+
+        if (result == null)
+            return Results.NotFound($"Customer with ID {id} not found.");
+
+        return Results.Ok(result);
     }
 }
