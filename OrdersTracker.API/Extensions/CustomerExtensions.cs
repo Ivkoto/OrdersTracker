@@ -28,4 +28,32 @@ public static class CustomerExtensions
             Phone = model.Phone,
             Fax = model.Fax
         };
+
+    public static OrderResponse ToResponse(this Order model)
+        => new OrderResponse
+        {
+            OrderID = model.OrderID,
+            CustomerID = model.CustomerID,
+            OrderDate = model.OrderDate,
+            RequiredDate = model.RequiredDate,
+            ShippedDate = model.ShippedDate,
+            ShipVia = model.ShipVia,
+            Freight = model.Freight,
+            ShipName = model.ShipName,
+            ShipAddress = model.ShipAddress,
+            ShipCity = model.ShipCity,
+            ShipRegion = model.ShipRegion,
+            ShipPostalCode = model.ShipPostalCode,
+            ShipCountry = model.ShipCountry,
+            OrderDetails = model.OrderDetails.Select(od => new OrderDetailsResponse
+            {
+                ProductID = od.ProductID,
+                UnitPrice = od.UnitPrice,
+                Quantity = od.Quantity,
+                Discount = od.Discount,
+                Discontinued = od.Discontinued,
+                UnitsInStock = od.UnitsInStock,
+                UnitsOnOrder = od.UnitsOnOrder
+            }).ToList()
+        };
 }

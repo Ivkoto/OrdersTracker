@@ -17,6 +17,9 @@ public static class Customers
     {
         var result = await customersRepository.GetCustomersList(context.RequestAborted);
 
+        if (result == null)
+            return Results.NotFound($"No customers found in the Database.");
+
         var customers = result.Select(c => c.ToResponse()).ToList();
 
         return Results.Ok(customers);
@@ -38,9 +41,11 @@ public static class Customers
     {
         var result = await customersRepository.GetCustomerOrders(id, context.RequestAborted);
 
-        if (result == null)
+        if (result == null || !result.Any())
             return Results.NotFound($"Customer with ID {id} not found.");
 
-        return Results.Ok(result);
+        var orders = result.Select(o => o.ToResponse()).ToList();
+
+        return Results.Ok(orders);
     }
 }
