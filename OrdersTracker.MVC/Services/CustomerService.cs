@@ -4,27 +4,40 @@ namespace OrdersTracker.MVC.Services;
 
 public class CustomerService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _client;
 
-    public CustomerService(IHttpClientFactory httpClientFactory)
+    public CustomerService(HttpClient client)
     {
-        _httpClientFactory = httpClientFactory;
+        _client = client;
     }
 
-    public async Task<List<CustomerResponse>> GetCustomersAsync()
+    public async Task<List<CustomerResponse>> GetCustomers()
     {
-        var client = _httpClientFactory.CreateClient("OrdersTrackerAPI");
-
-        var customers = await client.GetFromJsonAsync<List<CustomerResponse>>("/customers");
+        var customers = await _client.GetFromJsonAsync<List<CustomerResponse>>("/customers");
 
         return customers ?? new List<CustomerResponse>();
     }
 
-    public async Task<CustomerDetailsResponse?> GetCustomerByIdAsync(string id)
+    public async Task<CustomerDetailsResponse?> GetCustomerById(string id) 
     {
-        var client = _httpClientFactory.CreateClient("OrdersTrackerAPI");
-        var customer = await client.GetFromJsonAsync<CustomerDetailsResponse>($"/customers/{id}");
+        var customer = await _client.GetFromJsonAsync<CustomerDetailsResponse>($"/customers/{id}");
 
         return customer;
+    }
+
+    public async Task<List<OrderResponse>> GetCustomerOrders(string id)
+    {
+        var orders = await _client.GetFromJsonAsync<List<OrderResponse>>($"/customers/{id}/orders");
+
+        if (orders == null)
+            return new List<OrderResponse>();
+
+        foreach (var order in orders)
+        {
+            order.Total = order.OrderDetails.Sum(od => od.Quantity * od.UnitPrice * (1 - (decimal)od.Discount));
+            order.HasIssues = order.OrderDetails.Any(od => od.Discontinued || od.UnitsInStock < od.UnitsOnOrder);
+        }
+
+        return orders;
     }
 }

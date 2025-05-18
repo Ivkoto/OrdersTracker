@@ -2,10 +2,17 @@
 
 <h1>Customers</h1>
 
+<form method="get" asp-action="Index">
+    <div class="input-group mb-3">
+        <input type="text" name="searchTerm" class="form-control" placeholder="Enter ID or Name..." value="@ViewContext.HttpContext.Request.Query["searchTerm"]" />
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
-            <th>Customer ID</th>
+            <th>ID</th>
             <th>Contact Name</th>
             <th>Orders Count</th>
         </tr>
@@ -13,7 +20,7 @@
     <tbody>
         @foreach (var customer in Model)
         {
-            <tr>
+            <tr onclick="location.href='@Url.Action("Details", "Customer", new { id = customer.CustomerID })'" style="cursor: pointer;">
                 <td>@customer.CustomerID</td>
                 <td>@customer.ContactName</td>
                 <td>@customer.OrdersCount</td>

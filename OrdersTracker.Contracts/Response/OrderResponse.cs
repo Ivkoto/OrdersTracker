@@ -15,6 +15,8 @@ public class OrderResponse
     public string ShipPostalCode { get; init; }
     public string ShipCountry { get; init; }
     public List<OrderDetailsResponse> OrderDetails { get; init; } = new();
+    public decimal Total { get; set; }
+    public bool HasIssues { get; set; }
 }
 
 public class OrderDetailsResponse
