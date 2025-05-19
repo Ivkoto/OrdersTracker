@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.API", "Orders
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.MVC", "OrdersTracker.MVC\OrdersTracker.MVC.csproj", "{94D2F486-C2E2-481D-98F2-A840C35F959F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.UnitTests", "OrdersTracker.UnitTests\OrdersTracker.UnitTests.csproj", "{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.IntegrationTests", "OrdersTracker.IntegrationTests\OrdersTracker.IntegrationTests.csproj", "{7D54F473-22FE-4272-9F3A-8E8AD3441546}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersTracker.Database.Deploy", "OrdersTracker.Database.Deploy\OrdersTracker.Database.Deploy.csproj", "{A69374FF-44F4-4F49-8BDB-94DF1460630B}"
@@ -36,10 +34,6 @@ Global
 		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94D2F486-C2E2-481D-98F2-A840C35F959F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6D042F0-FDE2-4059-AE0A-288E5A9C97C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D54F473-22FE-4272-9F3A-8E8AD3441546}.Release|Any CPU.ActiveCfg = Release|Any CPU
