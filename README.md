@@ -87,6 +87,10 @@ This step will create the database, execute the scripts to create all the tables
    dotnet test OrdersTracker.IntegrationTests
    ```
 
+## Debugging Utilities
+
+This project includes a `DeleteBinObjFolders.bat` file, which is used for debugging purposes. It allows you to quickly delete all `bin` and `obj` folders in the project to ensure a clean build environment. Just double click to run it.
+
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. See the [`LICENSE`](./LICENSE) file for details.
